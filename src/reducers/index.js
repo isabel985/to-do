@@ -1,7 +1,11 @@
+import { DELETE_TODO } from '../actions/types';
 import initialState from '../data/listItems';
 
-// const initialState = [ "hey", "what's up", "hi"];
-
 export default function toDoListReducer( state = initialState, action ) {
-    return state;
+    switch (action.type) {
+        case DELETE_TODO:
+        return state.filter(listItem => listItem.id !== action.payload.id);
+        default:
+        return state;
+    }
 }

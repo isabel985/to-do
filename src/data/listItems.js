@@ -1,5 +1,3 @@
-// const listItems = [ "red", "yello", "greens" ];
-
 const listItems = [
     {
         id: 1,

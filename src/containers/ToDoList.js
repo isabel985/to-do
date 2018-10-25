@@ -1,17 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ListItem from '../components/ListItem';
+import { deleteListItem } from '../actions';
 
-function ToDoList({ listItems, someaction }) {
-    // const toDoItems = ["hello", "bye", "seeya"];
-
+function ToDoList({ listItems, onDelete }) {
     return (
         <React.Fragment>
             <h3>to do list:</h3>
             <ul>
                 {listItems.map(item => {
                     if (item.completed === false) {
-                        return <ListItem message={item.message} key={item.id} />
+                        return <ListItem listItem={item} onDelete={onDelete} key={item.id} />
                     }
                 })}
             </ul>
@@ -19,7 +18,7 @@ function ToDoList({ listItems, someaction }) {
             <ul>
                 {listItems.map(item => {
                     if (item.completed) {
-                        return <ListItem message={item.message} key={item.id} />
+                        return <ListItem listItem={item} onDelete={onDelete} key={item.id} />
                     }
                 })}
             </ul>
@@ -27,22 +26,20 @@ function ToDoList({ listItems, someaction }) {
     )
 }
 
-// export default ToDoList;
-
 const mapStateToProps = state => {
     return {
         listItems: state
     }
 }
 
-//   const mapDispatchToProps = dispatch => {
-//     return {
-//       onDelete: id => {
-//         dispatch(deleteBookmark(id));
-//       }
-//     }
-//   }
+  const mapDispatchToProps = dispatch => {
+    return {
+      onDelete: id => {
+        dispatch(deleteListItem(id));
+      }
+    }
+  }
 
 export default connect(
-    mapStateToProps
+    mapStateToProps, mapDispatchToProps
 )(ToDoList);
