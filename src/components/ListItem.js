@@ -1,7 +1,7 @@
 import React from 'react';
 
-export default ({ item }) => {
+export default ({ message }) => {
     return (
-        <li>{item}</li>
+        <li>{message} <button>delete</button></li>
     );
 };

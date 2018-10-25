@@ -6,13 +6,24 @@ function ToDoList({ listItems, someaction }) {
     // const toDoItems = ["hello", "bye", "seeya"];
 
     return (
-        <ul>
-            {listItems.map(item => {
-                return (
-                    <ListItem item={item} />
-                )
-            })}
-        </ul>
+        <React.Fragment>
+            <h3>to do list:</h3>
+            <ul>
+                {listItems.map(item => {
+                    if (item.completed === false) {
+                        return <ListItem message={item.message} key={item.id} />
+                    }
+                })}
+            </ul>
+            <h3>completed:</h3>
+            <ul>
+                {listItems.map(item => {
+                    if (item.completed) {
+                        return <ListItem message={item.message} key={item.id} />
+                    }
+                })}
+            </ul>
+        </React.Fragment>
     )
 }
 
@@ -20,10 +31,10 @@ function ToDoList({ listItems, someaction }) {
 
 const mapStateToProps = state => {
     return {
-      listItems: state
+        listItems: state
     }
-  }
-  
+}
+
 //   const mapDispatchToProps = dispatch => {
 //     return {
 //       onDelete: id => {
@@ -31,7 +42,7 @@ const mapStateToProps = state => {
 //       }
 //     }
 //   }
-  
-  export default connect(
+
+export default connect(
     mapStateToProps
-  )(ToDoList);
+)(ToDoList);
