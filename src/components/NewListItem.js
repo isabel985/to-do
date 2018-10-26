@@ -30,7 +30,7 @@ class NewListItem extends Component {
             <form onSubmit={this.handleSubmit}>
                 <input type="text" name="message" placeholder="message" onChange={this.handleInputChange} value={this.state.message} /> 
                 <hr />
-                <button type="submit">Add</button> 
+                <button type="submit">Add</button>  
                 <button type="button" onClick={this.handleReset}>Cancel</button>
             </form>
         )
