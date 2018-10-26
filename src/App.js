@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import ToDoList from './containers/ToDoList'
+import AddListItem from './containers/AddListItem';
 
 class App extends Component {
   render() {
     return (
         <div>
+          <AddListItem />
           <ToDoList />
         </div>
     );

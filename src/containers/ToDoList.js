@@ -10,16 +10,16 @@ function ToDoList({ listItems, onDelete }) {
             <ul>
                 {listItems.map(item => {
                     if (item.completed === false) {
-                        return <ListItem listItem={item} onDelete={onDelete} key={item.id} />
-                    }
+                        return <ListItem listItem={item} onDelete={onDelete} key={item.id} />;
+                    };
                 })}
             </ul>
             <h3>completed:</h3>
             <ul>
                 {listItems.map(item => {
                     if (item.completed) {
-                        return <ListItem listItem={item} onDelete={onDelete} key={item.id} />
-                    }
+                        return <ListItem listItem={item} onDelete={onDelete} key={item.id} />;
+                    };
                 })}
             </ul>
         </React.Fragment>
