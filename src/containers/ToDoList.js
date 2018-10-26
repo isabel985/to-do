@@ -18,7 +18,12 @@ function ToDoList({ listItems, onDelete, onToggleToDo }) {
             <ul>
                 {listItems.map(item => {
                     if (item.completed) {
-                        return <ListItem onToggleToDo={onToggleToDo} listItem={item} onDelete={onDelete} key={item.id} />;
+                        return <ListItem 
+                            onToggleToDo={onToggleToDo} 
+                            listItem={item} 
+                            onDelete={onDelete} 
+                            key={item.id}
+                            checked="checked" />;
                     };
                 })}
             </ul>
