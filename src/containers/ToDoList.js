@@ -23,7 +23,8 @@ function ToDoList({ listItems, onDelete, onToggleToDo }) {
                             listItem={item} 
                             onDelete={onDelete} 
                             key={item.id}
-                            checked="checked" />;
+                            checked="checked"
+                            />;
                     };
                 })}
             </ul>
