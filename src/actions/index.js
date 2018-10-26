@@ -1,5 +1,5 @@
 import uuidv4 from 'uuid/v4';
-import { DELETE_TODO, ADD_TODO } from './types'
+import { DELETE_TODO, ADD_TODO, TOGGLE_TODO } from './types'
 
 export const deleteListItem = id => ({
     type: DELETE_TODO,
@@ -15,4 +15,11 @@ export const addListItem = ({ message }) => ({
         message,
         completed: false
     }
-})
+});
+
+export const toggleToDo = id => ({
+    type: TOGGLE_TODO,
+    payload: {
+        id
+    }
+});

@@ -1,16 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ListItem from '../components/ListItem';
-import { deleteListItem } from '../actions';
+import { deleteListItem, toggleToDo } from '../actions';
 
-function ToDoList({ listItems, onDelete }) {
+function ToDoList({ listItems, onDelete, onToggleToDo }) {
     return (
         <React.Fragment>
             <h3>to do list:</h3>
             <ul>
                 {listItems.map(item => {
                     if (item.completed === false) {
-                        return <ListItem listItem={item} onDelete={onDelete} key={item.id} />;
+                        return <ListItem onToggleToDo={onToggleToDo} listItem={item} onDelete={onDelete} key={item.id} />;
                     };
                 })}
             </ul>
@@ -18,7 +18,7 @@ function ToDoList({ listItems, onDelete }) {
             <ul>
                 {listItems.map(item => {
                     if (item.completed) {
-                        return <ListItem listItem={item} onDelete={onDelete} key={item.id} />;
+                        return <ListItem onToggleToDo={onToggleToDo} listItem={item} onDelete={onDelete} key={item.id} />;
                     };
                 })}
             </ul>
@@ -36,6 +36,9 @@ const mapStateToProps = state => {
     return {
       onDelete: id => {
         dispatch(deleteListItem(id));
+      },
+      onToggleToDo: id => {
+        dispatch(toggleToDo(id));
       }
     }
   }
