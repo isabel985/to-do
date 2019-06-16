@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -29,4 +29,10 @@
   to {
     transform: rotate(360deg);
   }
+} */
+/* ----- ADD YOUR CSS HERE ------ */
+
+.wrapper {
+  width: 60%;
+  margin: auto;
 }
