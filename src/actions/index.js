@@ -1,24 +1,31 @@
 import uuidv4 from 'uuid/v4';
-import { DELETE_TODO, ADD_TODO, TOGGLE_TODO } from './types'
+import { ADD_LIST_ITEM, DELETE_LIST_ITEM, TOGGLE_COMPLETE, EDIT_LIST_ITEM } from './types'
+
+export const addListItem = ({ description }) => ({
+    type: ADD_LIST_ITEM,
+    payload: {
+        id: uuidv4(),
+        description,
+        completed: false
+    }
+});
 
 export const deleteListItem = id => ({
-    type: DELETE_TODO,
+    type: DELETE_LIST_ITEM,
     payload: {
         id
     }
 });
 
-export const addListItem = ({ message }) => ({
-    type: ADD_TODO,
+export const toggleComplete = id => ({
+    type: TOGGLE_COMPLETE,
     payload: {
-        id: uuidv4(),
-        message,
-        completed: false
+        id
     }
 });
 
-export const toggleToDo = id => ({
-    type: TOGGLE_TODO,
+export const editListItem = id => ({
+    type: EDIT_LIST_ITEM,
     payload: {
         id
     }

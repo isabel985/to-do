@@ -1,40 +1,36 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addListItem } from '../actions';
 
-class NewListItem extends Component {
-    state = {
-        message: ''
-    }
+const NewListItem = () => {
+    const dispatch = useDispatch();
+    
+    const [description, setDescription] = useState("");
 
-    handleInputChange = e => {
-        this.setState({
-            [e.target.name]: e.target.value
-        });
+    const handleInputChange = e => {
+        setDescription(e.target.value);
     };
 
-    handleSubmit = e => {
+    const handleSubmit = e => {
         e.preventDefault();
-        if (this.state.message.trim()) {
-            this.props.onAddListItem(this.state);
-            this.handleReset();
+        if (description) {
+          dispatch(addListItem(description.trim()));
+            handleReset();
         }
     };
 
-    handleReset = () => {
-        this.setState({
-            message: ''
-        })
+    const handleReset = () => {
+        setDescription('');
     };
 
-    render() {
-        return (
-            <form onSubmit={this.handleSubmit}>
-                <input type="text" name="message" placeholder="message" onChange={this.handleInputChange} value={this.state.message} /> 
-                <hr />
-                <button type="submit">Add</button>  
-                <button type="button" onClick={this.handleReset}>Cancel</button>
-            </form>
-        )
-    }
+    return (
+        <form onSubmit={handleSubmit}>
+            <input type="text" name="description" placeholder="description" onChange={handleInputChange} value={description} /> 
+            <hr />
+            <button type="submit">Add</button>  
+            <button type="button" onClick={handleReset}>Cancel</button>
+        </form>
+    )
 }
 
 export default NewListItem;

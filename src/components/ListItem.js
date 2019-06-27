@@ -1,21 +1,30 @@
 import React from 'react';
+import ListItemLabel from '../components/ListItemLabel';
 
-export default ({ listItem: { id, message, completed }, onDelete, onToggleToDo, checked }) => {
-    return (
-        <li>
-            <input 
-                onChange={() => onToggleToDo(id)}
-                type="checkbox"
-                checked={checked}
-                 />
-            <span>
-                {message}
-            </span>
-            <button 
-                type="button" 
-                onClick={() => onDelete(id)}>
-                delete
-            </button>
-        </li>
-    );
+const ListItem = ({ item: { id, description, isEditing }, checked, onDelete, onToggle, onEdit }) => {
+		return (
+				<li className="list-item">
+						<input 
+								onChange={() => onToggle(id)}
+								type="checkbox"
+								checked={checked}
+						/>
+						<ListItemLabel id={id} description={description} isEditing={isEditing} />
+						{description}
+						<button
+								className="edit-item"
+								type="button" 
+								onClick={() => onEdit(id)}>
+								edit
+						</button>
+						<button
+								className="delete-item"
+								type="button"
+								onClick={() => onDelete(id)}>
+								x
+						</button>
+				</li>
+		);
 };
+
+export default ListItem;
