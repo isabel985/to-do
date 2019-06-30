@@ -25,10 +25,18 @@ const NewListItem = () => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <input type="text" name="description" placeholder="description" onChange={handleInputChange} value={description} /> 
-            <hr />
-            <button type="submit">Add</button>  
-            <button type="button" onClick={handleReset}>Cancel</button>
+          <input 
+						type="text" 
+						name="description" 
+						placeholder="description" 
+						onChange={handleInputChange} 
+						value={description} 
+					/> 
+          <hr />
+					<button type="submit">Add</button>  
+					<button 
+						type="button" 
+						onClick={handleReset}>Cancel</button>
         </form>
     )
 }
