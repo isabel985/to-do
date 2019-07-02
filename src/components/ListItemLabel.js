@@ -1,31 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
-const ListItemLabel = () => {
-  const [description, setDescription] = useState("");
-  const [isEditing, setIsEditing] = useState("");
+const ListItemLabel = ({id, onEdit}) => {
+  const listItems = useSelector(state => state);
 
-  const handleDescriptionChange = (e) => {
-    setDescription(e.target.value);
-  };
-
-  if (isEditing) {
-    return (
-      <input 
-        type="text"
-        name="description"
-        className="item-editing"
-        value={description} 
-        onChange={handleDescriptionChange} 
-      />
-    )
-  }
+  const selectedListItem = listItems.find((listItem) => {
+    return listItem.id === id;
+  });
 
   return (
+    <React.Fragment>
     <label 
       className="item-description"
     >
-      {description}
+      {selectedListItem.description}
     </label>
+    <button className="edit-item" type="button" onClick={() => onEdit(id)}>Edit</button>
+    </React.Fragment>
   );
 }
 
