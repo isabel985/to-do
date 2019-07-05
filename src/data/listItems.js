@@ -1,4 +1,4 @@
-const item = [
+const listItems = [
     {
         id: 1,
         description: "Pick up dry cleaning",
@@ -11,4 +11,4 @@ const item = [
     }
 ]
 
-export default item;
+export default listItems;

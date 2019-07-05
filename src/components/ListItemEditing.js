@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { editListItem, saveListItem } from '../actions';
-import ListItemLabel from './ListItemLabel';
-
+import { saveListItem } from '../actions';
 
 // this component will not have a check box but will have a save button
 
@@ -30,20 +28,23 @@ const ListItemEditing = ({id, onCancel}) => {
   const handleOnSave = e => {
     function onSave() {
       dispatch(saveListItem(id, description));
+      onCancel();
     }
   }
-  
+
   // returning jsx
   return (
-    <React.Fragment>
-      <h3>ListItemEditing</h3>
+    <form onSubmit={handleOnSave}>
       <input 
-      type="text"
-      value={description}
-      />
-    <button className="save-item" type="button" onClick={() => dispatch(saveListItem(id))}>Save</button>
-    <button className="cancel-item" type="button">Cancel</button>
-    </React.Fragment>
+        name="edit-description"
+        type="text"
+        onChange={handleDescriptionChange}
+        value={selectedListItem.description}
+    />
+  <button className="save-item" type="sumbit" onClick={() => handleOnSave(id)}>Save</button>
+  <button className="cancel-item" type="button" onClick={() => onCancel(id)} >Cancel</button>
+  </form>
+
   )
 }
 
