@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteListItem } from './actions';
+import { deleteListItem } from '../actions';
 
 const ListItemLabel = ({id, onEdit}) => {
   const dispatch = useDispatch();
