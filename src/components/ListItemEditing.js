@@ -17,7 +17,7 @@ const ListItemEditing = ({id, onCancel}) => {
   });
 
   // set our local state to equal the selected listItem's description
-  const [description, setDescription] = useState(selectedListItem);
+  const [description, setDescription] = useState(selectedListItem.description);
 
   // handle changes to the description
   const handleDescriptionChange = e => {
@@ -25,25 +25,23 @@ const ListItemEditing = ({id, onCancel}) => {
   };
 
   // handle saving the new description value
-  const handleOnSave = e => {
-    function onSave() {
-      dispatch(saveListItem(id, description));
-      onCancel();
-    }
+  const handleDescriptionSave = e => {
+    dispatch(saveListItem(id, description));
+    onCancel();
   }
 
   // returning jsx
   return (
-    <form onSubmit={handleOnSave}>
+    <React.Fragment>
       <input 
-        name="edit-description"
+        name="description"
         type="text"
         onChange={handleDescriptionChange}
-        value={selectedListItem.description}
+        value={description}
     />
-  <button className="save-item" type="sumbit" onClick={() => handleOnSave(id)}>Save</button>
-  <button className="cancel-item" type="button" onClick={() => onCancel(id)} >Cancel</button>
-  </form>
+  <button className="save-item" type="sumbit" onClick={() => handleDescriptionSave()}>Save</button>
+  <button className="cancel-item" type="button" onClick={() => onCancel()} >Cancel</button>
+  </React.Fragment>
 
   )
 }
