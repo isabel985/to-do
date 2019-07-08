@@ -25,7 +25,7 @@ const ListItemEditing = ({id, onCancel}) => {
   };
 
   // handle saving the new description value
-  const handleDescriptionSave = e => {
+  const handleDescriptionSave = () => {
     dispatch(saveListItem(id, description));
     onCancel();
   }
@@ -39,7 +39,7 @@ const ListItemEditing = ({id, onCancel}) => {
         onChange={handleDescriptionChange}
         value={description}
     />
-  <button className="save-item" type="sumbit" onClick={() => handleDescriptionSave()}>Save</button>
+  <button className="save-item" type="button" onClick={() => handleDescriptionSave()}>Save</button>
   <button className="cancel-item" type="button" onClick={() => onCancel()} >Cancel</button>
   </React.Fragment>
 

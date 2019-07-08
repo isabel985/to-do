@@ -5,42 +5,31 @@ import { useSelector, useDispatch } from 'react-redux';
 
 function ToDoList({ listItems, onToggle }) {
 	return (
-		<div className="wrapper">
-				<h3>to do list:</h3>
+		<React.Fragment>
+			<h3>to do list:</h3>
 				<ul>
-						{listItems.map(item => {
-								if (!item.completed) {
-										return <ListItem 
-												item={item} 
-												key={item.id}
-												onToggle={onToggle} 
-												/>;
-								};
-						})}
-					</ul>
-					<h3>completed:</h3>
-					<ul>
-							{listItems.map(item => {
-									if (item.completed) {
-											return <ListItem 
-													item={item} 
-													key={item.id}
-													onToggle={onToggle} 
-													checked="checked"
-													/>;
-									};
-							})}
-					</ul>
-			</div>
-	)
+					{listItems.map((item) => {
+						if (!item.complete) {
+							return <ListItem id={item.id} key={item.id} onToggle={onToggle} />
+						}
+					})}
+				</ul>
+			<h3>completed:</h3>
+				<ul>
+					{listItems.map((item) => {
+						if (item.complete) {
+							return <ListItem id={item.id} key={item.id} onToggle={onToggle} checked="checked" />
+						}
+					})}
+				</ul>
+		</React.Fragment>
+	);
 }
 
 const ToDoListContainer = () => {
 	const listItems = useSelector(state => state);
 	const dispatch = useDispatch();
-	// need to be in ListItem.js
 	const onToggle = (id) => dispatch(toggleComplete(id));
-	// 
 	return <ToDoList listItems={listItems} onToggle={onToggle} />
 };
 

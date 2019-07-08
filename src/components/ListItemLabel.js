@@ -11,14 +11,14 @@ const ListItemLabel = ({id, onEdit}) => {
     return listItem.id === id;
   });
 
+  const description = selectedListItem.description;
+
   const onDelete = (id) => dispatch(deleteListItem(id));
 
   return (
     <React.Fragment>
-    <label 
-      className="item-description"ß
-    >
-      {selectedListItem.description}
+    <label className="item-description">
+      {description}
     </label>
     <button className="edit-item" type="button" onClick={() => onEdit(id)}>Edit</button>
     <button

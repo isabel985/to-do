@@ -2,12 +2,12 @@ const listItems = [
     {
         id: 1,
         description: "Pick up dry cleaning",
-        completed: true
+        complete: true
     },
     {
         id: 2,
         description: "Go grocery shopping",
-        completed: false
+        complete: false
     }
 ]
 

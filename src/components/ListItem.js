@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import ListItemLabel from '../components/ListItemLabel';
 import ListItemEditing from '../components/ListItemEditing';
 
-const ListItem = ({item: {id, description}, checked, onToggle}) => {
+const ListItem = ({ id, checked, onToggle}) => {
 	const [isEditing, setIsEditing] = useState(false);
 
 	// make the description editable
@@ -26,7 +25,6 @@ const ListItem = ({item: {id, description}, checked, onToggle}) => {
 							type="checkbox"
 							checked={checked}
 							id={`check-complete-${id}`}
-							value={description}
 						/>
 						<ListItemLabel id={id} onToggle={onToggle} onEdit={onEdit} /> 
 					</React.Fragment>
